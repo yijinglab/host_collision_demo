@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test.com - 公开网站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .vuln-badge {
+            background: #ff4757;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .info {
+            margin-top: 30px;
+            text-align: left;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 Test.com</h1>
+        <p>这是一个公开网站</p>
+        <div class="vuln-badge">⚠️ Host 碰撞漏洞存在</div>
+        
+        <div class="info">
+            <h3>漏洞说明：</h3>
+            <p>此 Nginx 配置存在 Host 碰撞漏洞，攻击者可以通过伪造 Host 头访问内部服务。</p>
+            <p><strong>测试命令：</strong></p>
+            <pre>curl -H "Host: admin.local" http://example.com/</pre>
+            <pre>curl -H "Host: api.internal" http://example.com/</pre>
+        </div>
+    </div>
+</body>
+</html>
